@@ -1,0 +1,8 @@
+{
+  "coc.preferences.extensionUpdateCheck": "weekly",
+  "diagnostic.signOffset": 1,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextPrefix": "[[[>",
+  "diagnostic.virtualText": true,
+  "codeLens.enable": true
+}

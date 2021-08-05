@@ -1,0 +1,13 @@
+#include "/home/yatung/.xinit/xterm"
+#include "/home/yatung/.xinit/rxvt"
+
+Xcursor.size:   96
+Xft.antialias:  true
+Xft.autohint:   false
+Xft.dpi:        96
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+XtDefaultBackground:    #171717
+XtDefaultForeground:    #AAAAAA

@@ -1,0 +1,111 @@
+Xft.dpi: 192
+
+!! 英文字体
+!XTerm*vt100.faceName:DejaVu Sans Mono:style=Book:antialias=false
+!! 中文字体
+!XTerm*vt100.faceNameDoublesize:xft:文泉驿等宽微米黑:style=Regular:antialias=true
+*vt100.faceSize:12
+
+!xterm*vt100.font:xft:文泉驿等宽微米黑:size=24:style=Regular:antialias=true
+!xterm*vt100.boldfont:xft:文泉驿等宽微米黑:size=24:style=Bold:antialias=true
+
+#include "/home/yatung/.xinit/xterm"
+
+!! 前景和背景颜色
+!xterm*background: black
+!xterm*foreground: gray
+
+*VT100.background: black
+*VT100.foreground: gray
+
+!! 快速滚动
+XTerm*fastScroll: true
+
+!! login shell
+XTerm*loginShell: true
+
+!! meta key
+XTerm*metaSendsEscape: true
+
+Xcursor.size: 96
+
+*VT100.Translations: #override \
+    <Key>BackSpace: string(0x7F) \n\
+    <Key>Delete: string("\033[3~") \n\
+    <Key>Home: string("\033[1~") \n\
+    <Key>End: string("\033[4~") \n\
+
+XTerm.vt100.metaSendsEscape: true
+XTerm.vt100.backarrowKey: false
+*ttyModes: erase ^?
+
+!! 使立即生效
+!xrdb .Xresource
+
+!! urxvt color set
+URxvt.multichar_encoding:utf-8
+URxvt.background:black
+URxvt.foreground:green
+
+URxvt.colorBD:yellow
+URxvt.colorUL:green
+URxvt.cursorColor:red3
+URxvt.color0:black
+URxvt.color1:red3
+URxvt.color2:springgreen
+URxvt.color3:wheat3
+URxvt.color4:navy
+URxvt.color5:magenta4
+URxvt.color6:steelblue1
+URxvt.color7:gray85
+URxvt.color8:gray10
+URxvt.color9:orangered2
+URxvt.color10:chartreuse3
+URxvt.color11:lightgoldenrod2
+URxvt.color12:skyblue1
+URxvt.color13:pink1
+URxvt.color14:lightblue1
+
+!! scroll set
+URxvt.scrollBar:false
+URxvt.scrollBar_right:true
+URxvt.scrollBar_floating:true
+URxvt.scrollstyle:plain
+URxvt.scrollWithBuffer:false
+URxvt.saveLines:5000
+
+!! font set
+URxvt.font:xft:DejaVu Sans Mono:size=12,xft:WenQuanYi Zen Hei Mono:size=12
+URxvt.boldfont:xft:WenQuanYi Zen Hei Mono:size=12:style=Bold:antialias=true
+
+!! Input Method set
+!URxvt.inputMethod:SCIM
+!URxvt.imLocale:zh_CN.utf8
+!URxvt.imFont:Microsoft Yahei
+!URxvt.preeditType: Root
+XTerm.inputMethod:SCIM
+XTerm.imLocale:zh_CN.utf8
+XTerm.imFont:WenQuanYi Zen Hei Mono
+XTerm.preeditType: Root
+
+!! window geometry set
+URxvt.geometry: 82x26+180+200
+URxvt.title:Rxvt
+
+!! bg transparent set
+URxvt.depth: 32
+URxvt.transparent: true
+URxvt.inheritPixmap: true
+URxvt.tintCddolor: white
+URxvt.shading: 80
+
+!! Tab set
+URxvt.perl-ext-common: default,tabbed
+URxvt.tabbed.tab-fg: 12
+URxvt.tabbed.tab-bg: 0
+URxvt.tabbed.tabbar-fg: 4
+
+Rxvt.menu:/etc/X11/rxvt.menu
+Rxvt.preeditType:Root
+Rxvt.transparency:255
+
