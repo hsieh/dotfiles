@@ -1,0 +1,19 @@
+.class Comment:C3
+.class Breaks:BC2
+.class Keyword:CF
+.class Literal:C6
+.class Number:C6
+:
+.default Keyword
+fn
+do
+end
+receive
+catch
+after
+rescue
+else
+:
+.default Type
+:
+.default

@@ -1,0 +1,37 @@
+.class Braces:BC2
+.class Keyword:CF
+.class Literal:BC5
+:
+.default Keyword
+after
+and
+andalso
+band
+begin
+bnot
+bor
+bsl
+bsr
+bxor
+case
+catch
+cond
+div
+end
+fun
+if
+let
+not
+of
+or
+orelse
+query
+receive
+rem
+try
+when
+xor
+:
+.default Type
+:
+.default

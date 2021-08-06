@@ -1,0 +1,15 @@
+source "filters.rc"
+set timeoutlen 50
+set autocolor 180
+; set fcolor lightgray
+
+setv %help-fullscreen true
+perl "use Help"
+perl "use shell"
+perl "use hgrep"
+
+bind-key resume-shell '	'
+bind-key next-window 
+bind-key previous-window 
+
+source "~/.vile/mymodes.rc"
