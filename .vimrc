@@ -40,7 +40,7 @@ set colorcolumn=121
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
-set signcolumn=yes
+" set signcolumn=yes
 set tabstop=4 softtabstop=4
 set nowrap
 set path+=**
