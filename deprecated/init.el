@@ -53,6 +53,10 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
+  (use-package undo-tree
+    :config
+    (global-undo-tree-mode 1)
+    (evil-set-undo-system 'undo-tree))
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-define-key 'normal emacs-lisp-mode-map (kbd "<return>") 'eval-defun))
 
@@ -97,9 +101,44 @@
 	  (setq pyim-page-tooltip 'posframe)
 	(setq pyim-page-tooltip 'popup)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; theme setting
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (use-package plan9-theme
+;;   :config
+;;   (load-theme 'plan9 t))
+
+(use-package acme-theme
+  :config
+  (load-theme 'acme t))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Oberon mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package oberon
+  :config
+  (add-to-list 'auto-mode-alist '("\\.Mod\\'" . oberon-mode))
+  (autoload 'oberon-mode "oberon" nil t)
+  (add-hook 'oberon-mode-hook (lambda () (abbrev-mode t))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Erlang mode for Emacs
+;; (setq load-path (cons "/usr/local/lib/erlang/lib/tools-3.5/emacs" load-path))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package erlang
+  :config
+  (setq erlang-root-dir "/usr/local/lib/erlang")
+  (setq exec-path (cons "/usr/local/bin" exec-path))
+  (require 'erlang-start))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Line number settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (column-number-mode 1)
-(global-display-line-numbers-mode 1)
 
 (dolist (mode '(org-mode-hook
 		term-mode-hook
@@ -108,6 +147,29 @@
 		undo-tree-mode-hook))
   (add-hook mode (lambda ()
 		   (display-line-numbers-mode -1))))
+
+(dolist (mode '(text-mode-hook
+		prog-mode-hook
+		conf-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 1))))
+
+;; 
+;; (global-display-line-numbers-mode 1)
+;; (add-hook 'command-log-mode-hook
+;; 	  (lambda ()
+;; 	    (if (equal (buffer-name) "*command-log*")
+;; 		(display-line-numbers-mode -1))))
+;; (dolist (mode '(org-mode-hook
+;;                 term-mode-hook
+;;                 eshell-mode-hook
+;;                 buffer-menu-mode-hook
+;;                 undo-tree-visualizer-mode-hook))
+;;    (add-hook mode (lambda () (display-line-numbers-mode -1))))
+;;  
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Other settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq custom-file (expand-file-name
 		   "custom.el"
@@ -125,10 +187,14 @@
   (tool-bar-mode -1)
   (tooltip-mode -1)
   (set-fringe-mode 8) ;; gaps
+
+  (defun text-scale-default ()
+    (interactive)
+    (text-scale-set 0))
+
   (global-set-key  (kbd "C-+") 'text-scale-increase)
   (global-set-key  (kbd "C-=") 'text-scale-decrease)
-  (global-set-key  (kbd "C-M-=") 'text-scale-set)
-  (load-theme 'adwaita))
+  (global-set-key  (kbd "C-M-=") 'text-scale-default))
 
 (setq inhibit-startup-screen t)
 
