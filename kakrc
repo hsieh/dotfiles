@@ -18,8 +18,13 @@ plug "kak-lsp/kak-lsp" do %{
         add-highlighter buffer/ number-lines
     }
     hook global WinSetOption filetype=(go) %{
-        set-option buffer formatcmd 'gofmt'
+        set-option buffer tabstop 4
+        set-option buffer aligntab true
     }
+}
+
+plug "ul/kak-tree" do %{
+    cargo install --locked --force --path . --features "rust javascript go"
 }
 
 plug "andreyorst/fzf.kak" defer fzf-project %{
@@ -40,9 +45,9 @@ plug "andreyorst/kaktree" defer kaktree %{
 } config %{
     hook global WinSetOption filetype=kaktree %{
         remove-highlighter buffer/numbers
-            remove-highlighter buffer/matching
-            remove-highlighter buffer/wrap
-            remove-highlighter buffer/show-whitespaces
+        remove-highlighter buffer/matching
+        remove-highlighter buffer/wrap
+        remove-highlighter buffer/show-whitespaces
     }
     kaktree-enable
     map -docstring 'kaktree' global normal '<F7>' ': kaktree-toggle<ret>'
