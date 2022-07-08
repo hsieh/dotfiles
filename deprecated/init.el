@@ -153,7 +153,7 @@
 		conf-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 1))))
 
-;; 
+;;
 ;; (global-display-line-numbers-mode 1)
 ;; (add-hook 'command-log-mode-hook
 ;; 	  (lambda ()
@@ -165,7 +165,7 @@
 ;;                 buffer-menu-mode-hook
 ;;                 undo-tree-visualizer-mode-hook))
 ;;    (add-hook mode (lambda () (display-line-numbers-mode -1))))
-;;  
+;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Other settings
