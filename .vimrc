@@ -77,4 +77,20 @@ let &shell='bash --login'
 " disable the screen switching
 set t_ti= t_te=
 
+set virtualedit=all
+
+if has("nvim")
+  augroup ved
+    au!
+    autocmd InsertEnter * set virtualedit=""
+    autocmd InsertLeave * set virtualedit=all
+  augroup END
+else
+  augroup ved
+    au!
+    autocmd InsertEnter * set virtualedit=none
+    autocmd InsertLeave * set virtualedit=all
+  augroup END
+endif
+
 " vim: set ft=vim :
