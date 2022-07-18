@@ -72,4 +72,9 @@ nnoremap <silent> ]q  :cprev <CR>
 nnoremap <silent> [Q  :cfirst <CR>
 nnoremap <silent> ]Q  :clast <CR>
 
+let &shell='bash --login'
+
+" disable the screen switching
+set t_ti= t_te=
+
 " vim: set ft=vim :
