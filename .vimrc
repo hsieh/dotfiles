@@ -20,18 +20,21 @@ set hidden
 
 set splitright splitbelow
 
-set colorcolumn=121
-highlight ColorColumn0 ctermbg=magenta
-call matchadd('ColorColumn0', '\%81v', 100)
+set signcolumn=auto
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
-highlight Trailing0 gui=underline guifg=red ctermbg=red
-match Trailing0 /\(\t\|\ \)\+$/
+set colorcolumn=121
+
+augroup customHi_
+  au!
+  autocmd VimEnter * highlight ColorColumn0 ctermbg=magenta
+  autocmd VimEnter * highlight Trailing0 gui=underline guifg=red ctermbg=red
+  autocmd VimEnter * call matchadd('ColorColumn0', '\%81v', 100)
+  autocmd VimEnter * match Trailing0 /\(\t\|\ \)\+$/
+augroup END
 
 syntax enable
 filetype plugin on
-
-set signcolumn=auto
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " indent settings
 "filetype indent on
@@ -77,20 +80,11 @@ let &shell='bash --login'
 " disable the screen switching
 set t_ti= t_te=
 
-set virtualedit=all
-
-if has("nvim")
-  augroup ved
-    au!
-    autocmd InsertEnter * set virtualedit=""
-    autocmd InsertLeave * set virtualedit=all
-  augroup END
-else
-  augroup ved
-    au!
-    autocmd InsertEnter * set virtualedit=none
-    autocmd InsertLeave * set virtualedit=all
-  augroup END
-endif
+setl virtualedit=all
+augroup ved
+  au!
+  autocmd InsertEnter * set virtualedit=""
+  autocmd InsertLeave * set virtualedit=all
+augroup END
 
 " vim: set ft=vim :
