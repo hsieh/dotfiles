@@ -25,12 +25,18 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 set colorcolumn=121
 
+function s:customHi()
+  highlight ColorColumn0 ctermbg=magenta
+  highlight Trailing0 gui=underline guifg=red ctermbg=red
+  call matchadd('ColorColumn0', '\%81v', 100)
+  " syn match Trailing0 /\(\t\|\ \)\+$/
+  call matchadd('Trailing0', '\s\+$', 100)
+endfunction
+
 augroup customHi_
   au!
-  autocmd VimEnter * highlight ColorColumn0 ctermbg=magenta
-  autocmd VimEnter * highlight Trailing0 gui=underline guifg=red ctermbg=red
-  autocmd VimEnter * call matchadd('ColorColumn0', '\%81v', 100)
-  autocmd VimEnter * match Trailing0 /\(\t\|\ \)\+$/
+  autocmd BufEnter * call s:customHi()
+  autocmd WinEnter * call s:customHi()
 augroup END
 
 syntax enable
