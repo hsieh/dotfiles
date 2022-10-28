@@ -29,6 +29,10 @@ set colorcolumn=121
 
 nnoremap * :keepjumps normal! mi*`i<CR>
 
+" after you paste something, press gb to select it in visual mode
+" so that you could format it or do something else
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
 function s:customHi()
   highlight ColorColumn0 ctermbg=magenta
   highlight Trailing0 ctermbg=darkgreen guibg=lightgreen
