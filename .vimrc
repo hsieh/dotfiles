@@ -25,17 +25,20 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 set colorcolumn=121
 
+nnoremap * :keepjumps normal! mi*`i<CR>
+
 function s:customHi()
   highlight ColorColumn0 ctermbg=magenta
-  highlight Trailing0 gui=underline guifg=red ctermbg=red
+  highlight Trailing0 ctermbg=darkgreen guibg=lightgreen
   call matchadd('ColorColumn0', '\%81v', 100)
-  " syn match Trailing0 /\(\t\|\ \)\+$/
   call matchadd('Trailing0', '\s\+$', 100)
 endfunction
 
+call s:customHi()
+
 augroup customHi_
   au!
-  autocmd BufEnter * call s:customHi()
+  "autocmd BufEnter * call s:customHi()
   autocmd WinEnter * call s:customHi()
 augroup END
 
@@ -63,6 +66,30 @@ let g:netrw_winsize=0
 let g:netrw_preview=1
 
 autocmd FileType netrw setl bufhidden=delete " or use :qa!
+
+function! NetrwRemoveRecursive()
+  if &filetype ==# 'netrw'
+    cnoremap <buffer> <CR> rm -r<CR>
+    normal mu
+    normal mf
+    try
+      normal mx
+    catch
+      echo "Canceled"
+    endtry
+
+    cunmap <buffer> <CR>
+  endif
+endfunction
+
+function! NetrwMapping()
+    nmap <buffer> FF :call NetrwRemoveRecursive()<CR>
+endfunction
+
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
 
 set laststatus=1 showtabline=1
 
