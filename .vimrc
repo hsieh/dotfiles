@@ -40,11 +40,9 @@ function s:customHi()
   call matchadd('Trailing0', '\s\+$', 100)
 endfunction
 
-call s:customHi()
-
 augroup customHi_
   au!
-  "autocmd BufEnter * call s:customHi()
+  autocmd BufEnter * call s:customHi()
   autocmd WinEnter * call s:customHi()
 augroup END
 
