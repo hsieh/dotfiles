@@ -1,4 +1,6 @@
 set nocp
+source $VIMRUNTIME/vimrc_example.vim
+
 set backspace=indent,eol,start
 set display=truncate
 set fileencodings=ucs-bom,utf-8,default,latin1
