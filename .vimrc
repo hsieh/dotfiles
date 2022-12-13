@@ -27,6 +27,8 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 set colorcolumn=121
 
+set grepprg=grep\ --exclude=*.sw?\ --exclude=.git/*\ -n\ -R\ $*\ /dev/null
+
 nnoremap * :keepjumps normal! mi*`i<CR>
 
 " after you paste something, press gb to select it in visual mode
