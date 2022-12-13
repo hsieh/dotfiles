@@ -33,17 +33,19 @@ nnoremap * :keepjumps normal! mi*`i<CR>
 " so that you could format it or do something else
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+
+let s:mTrailing0=-1
 function s:customHi()
   highlight ColorColumn0 ctermbg=magenta
   highlight Trailing0 ctermbg=darkgreen guibg=lightgreen
-  call matchadd('ColorColumn0', '\%81v', 100)
-  call matchadd('Trailing0', '\s\+$', 100)
+  "call matchadd('ColorColumn0', '\%81v', 100)
+  let s:mTrailing0=matchadd('Trailing0', '\s\+$', 100, s:mTrailing0)
 endfunction
 
+call s:customHi()
 augroup customHi_
   au!
-  autocmd BufEnter * call s:customHi()
-  autocmd WinEnter * call s:customHi()
+  autocmd WinNew * call s:customHi()
 augroup END
 
 syntax enable
