@@ -37,9 +37,9 @@ nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 
 function s:customHi()
-  highlight ColorColumn0 ctermbg=magenta
-  highlight Trailing0 ctermbg=darkgreen guibg=lightgreen
+  "highlight link ColorColumn0 ColorColumn
   "call matchadd('ColorColumn0', '\%81v', 100)
+  highlight link Trailing0 Error
   call matchadd('Trailing0', '\s\+$', 100)
 endfunction
 
